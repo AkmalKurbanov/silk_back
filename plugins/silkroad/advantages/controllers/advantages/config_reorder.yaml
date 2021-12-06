@@ -1,0 +1,4 @@
+title: Advantages
+modelClass: silkRoad\Advantages\Models\Advantage
+toolbar:
+    buttons: reorder_toolbar

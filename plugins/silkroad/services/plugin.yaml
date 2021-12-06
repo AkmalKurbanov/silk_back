@@ -1,0 +1,11 @@
+plugin:
+    name: 'silkroad.services::lang.plugin.name'
+    description: 'silkroad.services::lang.plugin.description'
+    author: silkRoad
+    icon: oc-icon-gears
+    homepage: ''
+navigation:
+    Services:
+        label: 'Services / Услуги'
+        url: silkroad/services/services
+        icon: icon-gears

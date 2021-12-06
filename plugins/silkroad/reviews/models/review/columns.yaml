@@ -1,0 +1,22 @@
+columns:
+    name:
+        label: 'Name / Имя'
+        type: text
+    surname:
+        label: 'Surname / Фамилия'
+        type: text
+    address:
+        label: 'Address / Адрес'
+        type: text
+    email:
+        label: Email
+        type: text
+    pub:
+        label: 'Published / Опубликован '
+        type: switch
+    created_at:
+        label: 'Created at / Создан'
+        type: datetime
+    updated_at:
+        label: 'Updated at / Обновлен'
+        type: datetime

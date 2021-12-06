@@ -1,0 +1,22 @@
+<p class="lead" style="color: #fff; margin-bottom: 10px; text-align: left;">
+    {{'Пожалуйста, проверьте свою электронную почту, чтобы получить код активации.'}}
+</p>
+<!-- Please check your email for the activation code. -->
+
+<form data-request="{{ __SELF__ }}::onResetPassword"
+    data-request-update="'{{ __SELF__ }}::complete': '#partialUserResetForm'">
+    <div class="input input--light">
+        <label for="resetCode">{{'Код активации'|_}}</label>
+        <input name="code" type="text" class="form-control" id="resetCode" placeholder="{{'Введите код активации'|_}}"
+            value="{{ __SELF__.code }}">
+    </div>
+
+    <div class="input input--light">
+        <label for="resetPassword">{{'Новый пароль'|_}}</label>
+        <input name="password" type="password" class="form-control" id="resetPassword"
+            placeholder="{{'Введите новый пароль'|_}}">
+        
+    </div>
+
+    <button type="submit" class="btn btn-default">{{'Сбросить пароль'|_}}</button>
+</form>

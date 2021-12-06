@@ -1,0 +1,10 @@
+name: Calculator
+form: $/silkroad/calculator/models/calculator/fields.yaml
+modelClass: silkroad\Calculator\Models\Calculator
+defaultRedirect: silkroad/calculator/calculator
+create:
+    redirect: 'silkroad/calculator/calculator/update/:id'
+    redirectClose: silkroad/calculator/calculator
+update:
+    redirect: silkroad/calculator/calculator
+    redirectClose: silkroad/calculator/calculator

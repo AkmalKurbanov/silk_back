@@ -1,0 +1,4 @@
+title: Calculator
+modelClass: silkroad\Calculator\Models\Calculator
+toolbar:
+    buttons: reorder_toolbar

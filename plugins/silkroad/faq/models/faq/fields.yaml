@@ -1,0 +1,11 @@
+fields:
+    question:
+        label: 'Question / Вопрос'
+        size: ''
+        span: auto
+        type: textarea
+    answer:
+        label: 'Answer / Ответ'
+        size: ''
+        span: right
+        type: textarea

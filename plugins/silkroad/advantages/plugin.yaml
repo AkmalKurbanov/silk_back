@@ -1,0 +1,11 @@
+plugin:
+    name: 'silkroad.advantages::lang.plugin.name'
+    description: 'silkroad.advantages::lang.plugin.description'
+    author: silkRoad
+    icon: oc-icon-adn
+    homepage: ''
+navigation:
+    Advantages:
+        label: 'Advantages / Преимущества'
+        url: silkroad/advantages/advantages
+        icon: icon-adn

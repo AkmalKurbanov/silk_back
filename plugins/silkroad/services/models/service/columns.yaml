@@ -1,0 +1,7 @@
+columns:
+    title:
+        label: 'Title / Заголовок'
+        type: text
+    desc:
+        label: 'Thumbnail sketch / Краткое описание'
+        type: text

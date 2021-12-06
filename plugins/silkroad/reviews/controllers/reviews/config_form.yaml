@@ -1,0 +1,10 @@
+name: Reviews
+form: $/silkroad/reviews/models/review/fields.yaml
+modelClass: silkroad\Reviews\Models\Review
+defaultRedirect: silkroad/reviews/reviews
+create:
+    redirect: 'silkroad/reviews/reviews/update/:id'
+    redirectClose: silkroad/reviews/reviews
+update:
+    redirect: silkroad/reviews/reviews
+    redirectClose: silkroad/reviews/reviews

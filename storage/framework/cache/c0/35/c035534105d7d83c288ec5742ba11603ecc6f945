@@ -1,0 +1,211 @@
+1638808048a:1:{s:11:"reviews.htm";a:12:{s:8:"fileName";s:11:"reviews.htm";s:7:"content";s:5040:"title = "Отзывы"
+url = "/reviews"
+layout = "default"
+is_hidden = 0
+
+[review]
+
+[builderList reviews]
+modelClass = "silkroad\Reviews\Models\Review"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[viewBag]
+localeTitle[en] = "Reviews"
+==
+{% partial 'site/breadcrumbs' %}
+<div class="reviews">
+  <div class="container">
+    <h2 class="title">{{'Отзывы клиентов'|_}}</h2>
+    <div class="description">
+      <p>{{'В данном разделе собраны реальные отзывы от клиентов и партнеров <br> компании Silk Road Shipping.'}}</p>
+      <div class="reviews__btn">
+        <p>{{'Вы так же можете'|_}}
+          {% if user %}
+          <a href="#" class="review-btn">{{'оставить свой отзыв'|_}} </a>
+          {% else %}
+          <a href="#" class="review-registration-btn">{{'оставить свой отзыв'|_}} </a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+    <div class="reviews__wrap-item">
+      {% set records = reviews.records %}
+      {% set displayColumn = reviews.displayColumn %}
+      {% set noRecordsMessage = reviews.noRecordsMessage %}
+      {% set detailsPage = reviews.detailsPage %}
+      {% set detailsKeyColumn = reviews.detailsKeyColumn %}
+      {% set detailsUrlParameter = reviews.detailsUrlParameter %}
+
+      {% for record in records %}
+      {% if record.pub == false %}
+
+
+      {% else %}
+      <div class="reviews__item">
+        <div class="reviews__top">
+          <div class="reviews__user">
+            <div class="reviews__icon"><i class="icon-profile"></i></div>
+            <div class="reviews__name"><span>{{record.name}} {{record.surname}}</span></div>
+          </div>
+          <div class="reviews__info">
+            <div class="reviews__date">{{record.created_at |date("m.d.Y")}}</div>
+          </div>
+        </div>
+        <div class="reviews__text">
+          <p>{{record.message}}</p>
+        </div>
+      </div>
+      {% endif %}
+
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+{% if user %}
+<div id="reviewForm" class="popup review-success">
+  <div class="popup__window">
+    <svg xmlns="http://www.w3.org/2000/svg" width="142" height="142" viewBox="0 0 142 142" fill="none">
+      <path
+        d="M71 112C93.6437 112 112 93.6437 112 71C112 48.3563 93.6437 30 71 30C48.3563 30 30 48.3563 30 71C30 93.6437 48.3563 112 71 112Z"
+        fill="#0DC332" />
+      <path
+        d="M133.5 71C133.5 105.518 105.518 133.5 71 133.5C36.4822 133.5 8.5 105.518 8.5 71C8.5 36.4822 36.4822 8.5 71 8.5C105.518 8.5 133.5 36.4822 133.5 71Z"
+        stroke="#D1D1D1" />
+      <path d="M92 56L66.1538 85L50 72.1111" stroke="white" stroke-width="6" stroke-miterlimit="10"
+        stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <h2>{{'Спасибо'|_}}!</h2>
+    <p>{{'Ваш отзыв отправлен'|_}}!</p>
+  </div>
+</div>
+
+<div class="popup review-popup">
+  <div class="popup__window">
+    <svg class="close" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x">
+      <path fill="currentColor"
+        d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
+        class=""></path>
+    </svg>
+    {% component 'review' %}
+  </div>
+</div>
+{% else %}
+
+<div class="popup review-registration">
+  <div class="popup__window">
+    <svg class="close" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x">
+      <path fill="currentColor"
+        d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
+        class=""></path>
+    </svg>
+    <p>{{'Чтобы оставить отзыв, Вам необходимо зарегистрироваться или быть авторизованным'|_}}!</p>
+    <a href="{{'registration'|page}}" class="btn">{{'Зарегистрироваться'|_}}</a>
+  </div>
+</div>
+
+{% endif %}";s:5:"mtime";i:1635170535;s:6:"markup";s:4653:"{% partial 'site/breadcrumbs' %}
+<div class="reviews">
+  <div class="container">
+    <h2 class="title">{{'Отзывы клиентов'|_}}</h2>
+    <div class="description">
+      <p>{{'В данном разделе собраны реальные отзывы от клиентов и партнеров <br> компании Silk Road Shipping.'}}</p>
+      <div class="reviews__btn">
+        <p>{{'Вы так же можете'|_}}
+          {% if user %}
+          <a href="#" class="review-btn">{{'оставить свой отзыв'|_}} </a>
+          {% else %}
+          <a href="#" class="review-registration-btn">{{'оставить свой отзыв'|_}} </a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+    <div class="reviews__wrap-item">
+      {% set records = reviews.records %}
+      {% set displayColumn = reviews.displayColumn %}
+      {% set noRecordsMessage = reviews.noRecordsMessage %}
+      {% set detailsPage = reviews.detailsPage %}
+      {% set detailsKeyColumn = reviews.detailsKeyColumn %}
+      {% set detailsUrlParameter = reviews.detailsUrlParameter %}
+
+      {% for record in records %}
+      {% if record.pub == false %}
+
+
+      {% else %}
+      <div class="reviews__item">
+        <div class="reviews__top">
+          <div class="reviews__user">
+            <div class="reviews__icon"><i class="icon-profile"></i></div>
+            <div class="reviews__name"><span>{{record.name}} {{record.surname}}</span></div>
+          </div>
+          <div class="reviews__info">
+            <div class="reviews__date">{{record.created_at |date("m.d.Y")}}</div>
+          </div>
+        </div>
+        <div class="reviews__text">
+          <p>{{record.message}}</p>
+        </div>
+      </div>
+      {% endif %}
+
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+{% if user %}
+<div id="reviewForm" class="popup review-success">
+  <div class="popup__window">
+    <svg xmlns="http://www.w3.org/2000/svg" width="142" height="142" viewBox="0 0 142 142" fill="none">
+      <path
+        d="M71 112C93.6437 112 112 93.6437 112 71C112 48.3563 93.6437 30 71 30C48.3563 30 30 48.3563 30 71C30 93.6437 48.3563 112 71 112Z"
+        fill="#0DC332" />
+      <path
+        d="M133.5 71C133.5 105.518 105.518 133.5 71 133.5C36.4822 133.5 8.5 105.518 8.5 71C8.5 36.4822 36.4822 8.5 71 8.5C105.518 8.5 133.5 36.4822 133.5 71Z"
+        stroke="#D1D1D1" />
+      <path d="M92 56L66.1538 85L50 72.1111" stroke="white" stroke-width="6" stroke-miterlimit="10"
+        stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <h2>{{'Спасибо'|_}}!</h2>
+    <p>{{'Ваш отзыв отправлен'|_}}!</p>
+  </div>
+</div>
+
+<div class="popup review-popup">
+  <div class="popup__window">
+    <svg class="close" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x">
+      <path fill="currentColor"
+        d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
+        class=""></path>
+    </svg>
+    {% component 'review' %}
+  </div>
+</div>
+{% else %}
+
+<div class="popup review-registration">
+  <div class="popup__window">
+    <svg class="close" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x">
+      <path fill="currentColor"
+        d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
+        class=""></path>
+    </svg>
+    <p>{{'Чтобы оставить отзыв, Вам необходимо зарегистрироваться или быть авторизованным'|_}}!</p>
+    <a href="{{'registration'|page}}" class="btn">{{'Зарегистрироваться'|_}}</a>
+  </div>
+</div>
+
+{% endif %}";s:4:"code";N;s:5:"title";s:12:"Отзывы";s:3:"url";s:8:"/reviews";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:6:"review";a:0:{}s:19:"builderList reviews";a:8:{s:10:"modelClass";s:30:"silkroad\Reviews\Models\Review";s:5:"scope";s:1:"-";s:10:"scopeValue";s:12:"{{ :scope }}";s:13:"displayColumn";s:4:"name";s:16:"noRecordsMessage";s:16:"No records found";s:11:"detailsPage";s:1:"-";s:19:"detailsUrlParameter";s:2:"id";s:10:"pageNumber";s:11:"{{ :page }}";}s:7:"viewBag";a:1:{s:11:"localeTitle";a:1:{s:2:"en";s:7:"Reviews";}}}}

@@ -1,0 +1,11 @@
+plugin:
+    name: 'silkroad.onlinestore::lang.plugin.name'
+    description: 'silkroad.onlinestore::lang.plugin.description'
+    author: silkroad
+    icon: oc-icon-shopping-cart
+    homepage: ''
+navigation:
+    Store:
+        label: 'Online store / Интернет магазин'
+        url: silkroad/onlinestore/store
+        icon: icon-shopping-cart

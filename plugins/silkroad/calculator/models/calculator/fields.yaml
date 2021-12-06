@@ -1,0 +1,13 @@
+fields:
+    city:
+        label: 'City / Город'
+        span: left
+        type: text
+    city_price:
+        label: 'Cost of delivery / Cтоимость доставки'
+        span: right
+        type: number
+    pub:
+        label: 'Published / Опубликовано'
+        span: full
+        type: switch

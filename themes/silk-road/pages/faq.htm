@@ -1,0 +1,38 @@
+title = "Faq"
+url = "/faq"
+layout = "default"
+is_hidden = 0
+
+[builderList faq]
+modelClass = "silkRoad\Faq\Models\Faq"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "question"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% partial 'site/breadcrumbs' %}
+<div class="faq">
+  <div class="container">
+    <ul>
+      {% set records = faq.records %}
+      {% set displayColumn = faq.displayColumn %}
+      {% set noRecordsMessage = faq.noRecordsMessage %}
+      {% set detailsPage = faq.detailsPage %}
+      {% set detailsKeyColumn = faq.detailsKeyColumn %}
+      {% set detailsUrlParameter = faq.detailsUrlParameter %}
+
+      {% for record in records %}
+      <li>
+        <div class="faq__title">{{record.question}}</div>
+        <div class="faq__desc">{{record.answer}}</div>
+      </li>
+      {% else %}
+      <li class="no-data">{{ noRecordsMessage }}</li>
+      {% endfor %}
+
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+plugin:
+    name: 'silkroad.profile::lang.plugin.name'
+    description: 'silkroad.profile::lang.plugin.description'
+    author: silkroad
+    icon: oc-icon-book
+    homepage: ''

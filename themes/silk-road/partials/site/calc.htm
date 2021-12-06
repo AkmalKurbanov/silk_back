@@ -1,0 +1,473 @@
+[viewBag]
+
+[builderList city]
+modelClass = "silkroad\Calculator\Models\Calculator"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "city"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList formula]
+modelClass = "silkroad\Calculator\Models\Formula"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "main_price"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+==
+{% if this.page.url == "/" %}
+<div class="calculator" id="calculator">
+  {% else %}
+  <div class="calculator" id="calculator" style="display: none;">
+    {% endif %}
+    <div class="container">
+      <div class="calculator__wrap">
+        <div class="calculator__col">
+          <h3 class="subtitle">{{'Калькулятор'|_}}</h3>
+          <h2 class="title">{{'Рассчитайте стоимость превозки'|_}}</h2>
+          {% component 'contenteditor' fixture="p" class="description" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="calculate/desc.htm" %}
+          <div class="calculator__tab-block tab">
+            <ul class="tabs">
+              <li><a class="route-tab-btn" href="#">{{'МАРШРУТ'|_}}</a></li>
+              <li><a class="about-cargo-tab-btn" href="#">{{'О ГРУЗЕ'|_}}</a></li>
+              <li><a class="rate-tab-btn" href="#">{{'ИТОГ'|_}}</a></li>
+              <li><a class="contacts-tab-btn" href="#">{{'Контакты'|_}}</a></li>
+            </ul>
+            <div class="tab_content">
+              <div id="contacts">
+                <div class="tabs_item route-tab">
+                  <div class="input">
+                    <label for="from">{{'Откуда'|_}}</label>
+                    <input type="text" id="from" value="Chicago, IL" style="pointer-events: none;">
+                    <div class="input__icon"><i class="icon-marker2"></i></div>
+                  </div>
+                  <div class="input input--select">
+                    <div class="input__icon"><i class="icon-marker2"></i></div>
+                    <label for="package">{{'Куда'|_}}</label>
+                    <input class="select-type" type="hidden" value="{{'Ваш контейнер'|_}}" name="{{'Упаковка'|_}}"
+                      id="package">
+                    <div class="select">
+                      <div class="select__checked">{{'Выбирите пункт'|_}}</div>
+                      <ul class="select__dropdown">
+
+                        {% set records = city.records %}
+                        {% set displayColumn = city.displayColumn %}
+                        {% set noRecordsMessage = city.noRecordsMessage %}
+                        {% set detailsPage = city.detailsPage %}
+                        {% set detailsKeyColumn = city.detailsKeyColumn %}
+                        {% set detailsUrlParameter = city.detailsUrlParameter %}
+
+                        {% for record in records %}
+                        {% if record.pub == false %}
+
+                        {% else %}
+                        <li data-value="{{record.city}}" data-price="{{record.city_price}}">{{record.city}}</li>
+                        {% endif %}
+
+                        {% endfor %}
+
+                      </ul>
+                    </div>
+                  </div>
+                  <a class="btn btn-step" href="#">{{'Следующий шаг'|_}}</a>
+                </div>
+                <div class="tabs_item about-cargo-tab">
+                  <div class="calculator__description">
+                    {% component 'contenteditor' fixture="p" class="" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="calculate/about_cargo1.htm" %}
+                  </div>
+
+                  <div class="input input--raw input--raw1">
+                    <label for="weight">{{'Вес груза'|_}}</label>
+                    <input type="number" id="weight" placeholder="15" name="{{'Вес груза'|_}}">
+                  </div>
+                  <div class="input input--raw input--raw2">
+                    <label for="price">{{'Цена'|_}}</label>
+                    {% set records = formula.records %}
+                    {% set displayColumn = formula.displayColumn %}
+                    {% set noRecordsMessage = formula.noRecordsMessage %}
+                    {% set detailsPage = formula.detailsPage %}
+                    {% set detailsKeyColumn = formula.detailsKeyColumn %}
+                    {% set detailsUrlParameter = formula.detailsUrlParameter %}
+
+                    {% for record in records %}
+
+                    <input type="text" id="mainPrice" value="${{record.main_price}}/{{'кг'|_}}" name="{{'Цена'|_}}"
+                      data-mainprice="{{record.main_price}}" style="pointer-events: none;">
+
+
+                    {% endfor %}
+
+
+                  </div>
+                  <br>
+
+                  <div class="input input--raw input--raw3">
+                    <label for="length">{{'Обьем груза'|_}}</label>
+                    <input type="number" id="length" placeholder="{{'Длина дюйм'|_}}" name="Количество">
+                  </div>
+                  <div class="input input--raw input--raw4">
+                    <input type="number" id="width" placeholder="{{'Ширина дюйм'|_}}" name="Количество">
+                  </div>
+                  <div class="input input--raw input--raw5">
+                    <input type="number" id="height" placeholder="{{'Высота дюйм'|_}}" name="Количество">
+                  </div>
+                  <input type="hidden" id="divider" value="366">
+                  <br>
+                  <div class="additional-info">
+                    {% component 'contenteditor' fixture="p" class="" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="calculate/formula.htm" %}
+                  </div>
+
+                  {% component 'contenteditor' fixture="p" class="" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="calculate/about_cargo2.htm" %}
+                  <br>
+                  <br>
+                  <div class="input input--textarea">
+                    <label for="cargo-information">{{'Информация о грузе'|_}}</label>
+                    <textarea name="Информация о грузе" placeholder="Сообщение" id="cargo-information"></textarea>
+                  </div><a class="btn btn-step" href="#">{{'Следующий шаг'|_}}</a>
+                </div>
+                <div class="tabs_item rate-tab">
+                  <div class="calculator__description">
+                    {% component 'contenteditor' fixture="p" class="" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="calculate/desc2.htm" %}
+                  </div>
+
+                  <div class="calculator__total">
+                    <div class="calculator__detailed-info">
+                      <div class="detailed-info-block">
+                        <ul>
+                          <li>
+                            <span>{{'Вес груза'|_}}</span>
+                            <div><span class="detailed-info-block__weight"></span> <span>{{'кг'|_}}</span></div>
+
+
+                          </li>
+                          <li>
+                            <span>{{'Цена за кг'|_}}</span>
+                            <span
+                              class="detailed-info-block__price">${% for record in records %}{{record.main_price}}{% endfor %}/{{'кг'}}</span>
+
+                          </li>
+                          <li>
+                            <span>{{'Город'|_}}</span>
+                            <span class="detailed-info-block__city"></span>
+
+                          </li>
+                          <li>
+                            <span>{{'Предполагаемая итоговая сумма'|_}}</span>
+                            <span class="detailed-info-block__total"></span>
+
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <a class="btn" href="#">107,97 $ </a>
+                  </div>
+                </div>
+                <div class="tabs_item contacts-tab">
+                  <div class="calculator__description">
+                    <p>{{'Мы свяжемся с Вами в ближайшее время!'|_}}</p>
+                  </div>
+
+                  {% if activeLocale == 'ru' %}
+                  <form data-request="{{ CalculatorFormRu }}::onFormSubmit">
+
+                    {{ form_token() }}
+                    <div id="{{ CalculatorFormRu }}_forms_flash"></div>
+
+                    {% if user %}
+                    <div class="input">
+                      <label for="name">Ф.И.О</label>
+                      <input type="text" id="name" name="Ф.И.О" placeholder="Иванов Иван"
+                        value="{{user.name}} {{user.surname}}">
+                    </div>
+                    <div class="input">
+                      <label for="phone">Номер телефона</label>
+                      <input type="text" id="phone" name="Телефон" placeholder="+1 847 2711988" value="{{user.phone}}">
+                    </div>
+                    <div class="input">
+                      <label for="email">Email</label>
+                      <input type="text" id="email" name="email" placeholder="ivanov@gmail.com" value="{{user.email}}">
+                    </div>
+                    {% else %}
+
+                    <div class="input">
+                      <label for="name">Ф.И.О</label>
+                      <input type="text" id="name" name="Ф.И.О" placeholder="Иванов Иван">
+                    </div>
+                    <div class="input">
+                      <label for="phone">Номер телефона</label>
+                      <input type="text" id="phone" name="Телефон" placeholder="+1 847 2711988 ">
+                    </div>
+                    <div class="input">
+                      <label for="email">Email</label>
+                      <input type="text" id="email" name="email" placeholder="ivanov@gmail.com">
+                    </div>
+
+                    {% endif %}
+
+                    {% if user %}
+                    <button class="btn" type="submit">Отправить</button>
+                    {% else %}
+                    <button class="btn btn-step" type="submit">Отправить</button>
+                    {% endif %}
+                  </form>
+                  {% else %}
+
+                  <form data-request="{{ CalculatorFormEn }}::onFormSubmit">
+
+                    {{ form_token() }}
+
+                    <div id="{{ CalculatorFormEn }}_forms_flash"></div>
+
+                    {% if user %}
+                    <div class="input">
+                      <label for="name">Full name</label>
+                      <input type="text" id="name" name="Full_name" placeholder="Ivanov Ivan"
+                        value="{{user.name}} {{user.surname}}">
+                    </div>
+                    <div class="input">
+                      <label for="phone">Phone</label>
+                      <input type="text" id="phone" name="Phone" placeholder="+1 847 2711988" value="{{user.phone}}">
+                    </div>
+                    <div class="input">
+                      <label for="email">Email</label>
+                      <input type="text" id="email" name="email" placeholder="ivanov@gmail.com" value="{{user.email}}">
+                    </div>
+                    {% else %}
+                    <div class="input">
+                      <label for="name">Full name</label>
+                      <input type="text" id="name" name="Full_name" placeholder="Ivanov Ivan">
+                    </div>
+                    <div class="input">
+                      <label for="phone">Phone</label>
+                      <input type="text" id="phone" name="Phone" placeholder="+1 847 2711988 ">
+                    </div>
+                    <div class="input">
+                      <label for="email">Email</label>
+                      <input type="text" id="email" name="email" placeholder="ivanov@gmail.com">
+                    </div>
+                    {% endif %}
+
+
+                    {% if user %}
+                    <button class="btn" type="submit">Send</button>
+                    {% else %}
+                    <button class="btn btn-step" type="submit">Send</button>
+                    {% endif %}
+                  </form>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <br>
+         <div class="calculator__info">
+           <div class="calculator__info-item">
+             <div class="calculator__info-icon">
+               <i class="icon-calendar"></i>
+             </div>
+             <div class="calculator__info-desc">
+               <span>{{'время доставки'|_}}</span>
+               <p>7-9 {{'дней'|_}}</p>
+             </div>
+           </div>
+           <div class="calculator__info-item">
+             <div class="calculator__info-icon">
+               <i class="icon-product"></i>
+               <span>{{'СБОР'|_}}</span>
+             </div>
+             <div class="calculator__info-desc">
+               <span>{{'до каждой среды'|_}}</span>
+               <p>
+                 {{ "wednesday"|date('d.m.y') }}
+                </p>
+             </div>
+           </div>
+            <div class="calculator__info-item">
+              <div class="calculator__info-icon">
+                <i class="icon-boing"></i>
+                <span>{{'ВЫЛЕТЫ'|_}}</span>
+              </div>
+              <div class="calculator__info-desc">
+                <span>{{'каждое воскресенье'|_}}</span>
+                <p>
+                  {{ "sunday"|date('d.m.y') }}
+                </p>
+              </div>
+            </div>
+            <div class="calculator__info-additional">
+              <div class="calculator__info-additional-item">
+                <p>{{'ЦЕНЫ НА ЭЛЕКТРОНИКУ и КОММЕРЧЕСКИЙ ГРУЗ'|_}}</p>
+              </div>
+              <div class="calculator__info-additional-item">
+                <p>{{'отличаются и не показаны на калькуляторе'|_}}.</p>
+              </div>
+              <div class="calculator__info-additional-item">
+                <p>{{'Позвоните чтобы получить детальную информацию'|_}}.</p>
+              </div>
+            </div>
+         </div>
+          </div>
+        </div>
+        <div class="calculator__col">
+          <div class="calculator__tab-img1 tab-img">
+            <img src="{{'assets/img/tab1.svg'| theme}}" alt="">
+            <div class="calculator-plane"><img src="{{'assets/icons/steps-plane.svg'| theme}}" alt=""></div>
+          </div>
+          <div class="calculator__tab-img2 tab-img">
+            <img src="{{'assets/img/tab2.svg'| theme}}" alt="">
+          </div>
+          <div class="calculator__tab-img3 tab-img">
+            <img src="{{'assets/img/tab3.svg'| theme}}" alt="">
+          </div>
+          <div class="calculator__tab-img4 tab-img">
+            <img src="{{'assets/img/tab4.svg'| theme}}" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="for-customer" id="illinois-form">
+        <h2 class="title">Клиентам за пределами штата Иллинойс<a class="for-customer__trigger" href=""><i
+              class="icon-angle"></i></a></h2>
+        <div class="for-customer__fade-block">
+          <div class="for-customer__wrap">
+            <div class="for-customer__col">
+              {% component 'contenteditor' fixture="h3" class="subtitle" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="Illinois/Illinois.htm" %}
+              <img src="{{'assets/img/for-customers.svg'| theme}}" alt="">
+            </div>
+            <div class="for-customer__col">
+              <h3 class="subtitle">{{'Для этого нам требуется инфо от отправителя:'|_}}</h3>
+
+
+              {% if activeLocale == 'ru' %}
+              <form data-request="{{ IllinoisFormRu }}::onFormSubmit">
+
+                {{ form_token() }}
+
+                <div id="{{ IllinoisFormRu }}_forms_flash"></div>
+
+                {% if user %}
+                <div class="input">
+                  <label for="name">Ф.И.О</label>
+                  <input name="Ф.И.О" type="text" id="name" placeholder="{{'Иванов Иван Иванович'|_}}"
+                    value="{{user.name}} {{user.surname}}">
+                </div>
+                <div class="input">
+                  <label for="address">Адрес</label>
+                  <input name="Адрес" type="text" id="address"
+                    placeholder="{{'New York, 10007, Соединенные Штаты Америки'|_}}" value="{{user.address}}">
+                </div>
+                <div class="input">
+                  <label for="phone">Телефон</label>
+                  <input name="Телефон" type="text" id="phone" placeholder="+ 1 630 9 8 10 1 630"
+                    value="{{user.phone}}">
+                </div>
+                <div class="input">
+                  <label for="weight">Вес груза</label>
+                  <input name="Вес_груза" type="text" id="weight" placeholder="{{'15 кг'}}">
+                </div>
+                <div class="input">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="text" placeholder="ivanov@gmail.com" value="{{user.email}}">
+                </div>
+                {% else %}
+                <div class="input">
+                  <label for="name">Ф.И.О</label>
+                  <input name="Ф.И.О" type="text" id="name" placeholder="{{'Иванов Иван Иванович'|_}}">
+                </div>
+                <div class="input">
+                  <label for="address">Адрес</label>
+                  <input name="Адрес" type="text" id="address"
+                    placeholder="{{'New York, 10007, Соединенные Штаты Америки'|_}}">
+                </div>
+                <div class="input">
+                  <label for="phone">Телефон</label>
+                  <input name="Телефон" type="text" id="phone" placeholder="+ 1 630 9 8 10 1 630">
+                </div>
+                <div class="input">
+                  <label for="weight">Вес груза</label>
+                  <input name="Вес_груза" type="text" id="weight" placeholder="{{'15 кг'}}">
+                </div>
+                <div class="input">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="text" placeholder="ivanov@gmail.com">
+                </div>
+                {% endif %}
+
+                <button id="simpleContactSubmitButton" type="submit" class="btn btn-default">{{'Отправить'|_}}</button>
+
+              </form>
+              {% else %}
+
+              <form data-request="{{ IllinoisFormEn }}::onFormSubmit">
+
+                {{ form_token() }}
+
+                <div id="{{ IllinoisFormEn }}_forms_flash"></div>
+
+                {% if user %}
+                <div class="input">
+                  <label for="name">Full name</label>
+                  <input name="Full_name" type="text" id="name" placeholder="{{'Иванов Иван Иванович'|_}}"
+                    value="{{user.name}} {{user.surname}}">
+                </div>
+                <div class="input">
+                  <label for="address">Address</label>
+                  <input name="Address" type="text" id="address"
+                    placeholder="{{'New York, 10007, Соединенные Штаты Америки'|_}}" value="{{user.address}}">
+                </div>
+                <div class="input">
+                  <label for="phone">Phone</label>
+                  <input name="Phone" type="text" id="phone" placeholder="+ 1 630 9 8 10 1 630" value="{{user.phone}}">
+                </div>
+                <div class="input">
+                  <label for="weight">Cargo weight</label>
+                  <input name="Cargo_weight" type="text" id="weight" placeholder="{{'15 кг'}}">
+                </div>
+                <div class="input">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="text" placeholder="ivanov@gmail.com" value="{{user.email}}">
+                </div>
+                {% else %}
+                <div class="input">
+                  <label for="name">Full name</label>
+                  <input name="Full_name" type="text" id="name" placeholder="{{'Иванов Иван Иванович'|_}}">
+                </div>
+                <div class="input">
+                  <label for="address">Address</label>
+                  <input name="Address" type="text" id="address"
+                    placeholder="{{'New York, 10007, Соединенные Штаты Америки'|_}}">
+                </div>
+                <div class="input">
+                  <label for="phone">Phone</label>
+                  <input name="Phone" type="text" id="phone" placeholder="+ 1 630 9 8 10 1 630">
+                </div>
+                <div class="input">
+                  <label for="weight">Cargo weight</label>
+                  <input name="Cargo_weight" type="text" id="weight" placeholder="{{'15 кг'}}">
+                </div>
+                <div class="input">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="text" placeholder="ivanov@gmail.com">
+                </div>
+                {% endif %}
+                <button id="simpleContactSubmitButton" type="submit" class="btn btn-default">{{'Отправить'|_}}</button>
+
+              </form>
+
+              {% endif %}
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>

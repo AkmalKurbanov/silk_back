@@ -1,0 +1,43 @@
+1638808256a:1:{s:14:"site/about.htm";a:5:{s:8:"fileName";s:14:"site/about.htm";s:7:"content";s:1777:"<div class="about-info">
+  <div class="container">
+    <div class="about-info__wrap">
+      <div class="about-info__item">
+        {% component 'contenteditor' fixture="div" class="about-info__title" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item1.htm" %}
+        {% component 'contenteditor' fixture="div" class="about-info__desc" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item1.1.htm" %}
+      </div>
+      <div class="about-info__item">
+        {% component 'contenteditor' fixture="div" class="about-info__title" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item2.htm" %}
+        {% component 'contenteditor' fixture="div" class="about-info__desc" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item2.1.htm" %}
+      </div>
+      <div class="about-info__item">
+        {% component 'contenteditor' fixture="div" class="about-info__title" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item3.htm" %}
+        {% component 'contenteditor' fixture="div" class="about-info__desc" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item3.1.htm" %}
+      </div>
+      <div class="about-info__item">
+        {% component 'contenteditor' fixture="div" class="about-info__title" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item4.htm" %}
+        {% component 'contenteditor' fixture="div" class="about-info__desc" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item4.1.htm" %}
+      </div>
+    </div>
+  </div>
+</div>";s:5:"mtime";i:1633790355;s:6:"markup";s:1777:"<div class="about-info">
+  <div class="container">
+    <div class="about-info__wrap">
+      <div class="about-info__item">
+        {% component 'contenteditor' fixture="div" class="about-info__title" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item1.htm" %}
+        {% component 'contenteditor' fixture="div" class="about-info__desc" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item1.1.htm" %}
+      </div>
+      <div class="about-info__item">
+        {% component 'contenteditor' fixture="div" class="about-info__title" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item2.htm" %}
+        {% component 'contenteditor' fixture="div" class="about-info__desc" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item2.1.htm" %}
+      </div>
+      <div class="about-info__item">
+        {% component 'contenteditor' fixture="div" class="about-info__title" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item3.htm" %}
+        {% component 'contenteditor' fixture="div" class="about-info__desc" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item3.1.htm" %}
+      </div>
+      <div class="about-info__item">
+        {% component 'contenteditor' fixture="div" class="about-info__title" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item4.htm" %}
+        {% component 'contenteditor' fixture="div" class="about-info__desc" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/item4.1.htm" %}
+      </div>
+    </div>
+  </div>
+</div>";s:4:"code";N;}}

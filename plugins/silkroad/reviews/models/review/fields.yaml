@@ -1,0 +1,26 @@
+fields:
+    name:
+        label: 'Name / Имя'
+        span: auto
+        type: text
+    surname:
+        label: 'Surname / Фамилия'
+        span: right
+        type: text
+    address:
+        label: 'Address / Адрес'
+        span: auto
+        type: text
+    email:
+        label: Email
+        span: auto
+        type: text
+    message:
+        label: 'Review / Отзыв'
+        size: ''
+        span: full
+        type: textarea
+    pub:
+        label: 'Publish / Опубликовать'
+        span: full
+        type: switch

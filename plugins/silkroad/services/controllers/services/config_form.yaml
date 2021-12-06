@@ -1,0 +1,10 @@
+name: Services
+form: $/silkroad/services/models/service/fields.yaml
+modelClass: silkRoad\Services\Models\Service
+defaultRedirect: silkroad/services/services
+create:
+    redirect: 'silkroad/services/services/update/:id'
+    redirectClose: silkroad/services/services
+update:
+    redirect: silkroad/services/services
+    redirectClose: silkroad/services/services

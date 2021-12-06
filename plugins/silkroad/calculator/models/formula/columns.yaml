@@ -1,0 +1,13 @@
+columns:
+    main_price:
+        label: 'Price per kg / Цена за кг'
+        type: text
+    divider:
+        label: 'Divider / Делитель'
+        type: text
+    created_at:
+        label: 'Created_at / Создано'
+        type: datetime
+    updated_at:
+        label: 'Updated_at / Обновлено'
+        type: datetime

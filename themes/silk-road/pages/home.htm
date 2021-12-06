@@ -1,0 +1,479 @@
+title = "Demonstration"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[builderList advantages]
+modelClass = "silkRoad\Advantages\Models\Advantage"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList services]
+modelClass = "silkRoad\Services\Models\Service"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "service"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+pageNumber = "{{ :page }}"
+
+[review]
+
+[builderList reviews]
+modelClass = "silkroad\Reviews\Models\Review"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<div class="hero">
+  <div class="hero__bg">
+    {% component 'contenteditor' file="hero/img.htm" fixture="" tools="image,remove" class="hero-bg" %}
+  </div>
+  <div class="container">
+    <div class="hero__text-block">
+      {% component 'contenteditor' fixture="h2" class="hero__title" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="hero/title.htm" %}
+      <div class="hero__desc">
+        {% component 'contenteditor' fixture="p" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="hero/desc1.htm" %}
+        <a class="btn btn--sm order-js fedex-js" href="#illinois-form">{{'Заполнить форму'|_}} </a>
+        {% component 'contenteditor' fixture="p" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="hero/desc2.htm" %}
+      </div>
+    </div>
+    <a class="btn btn--sm order-js" href="#calculator">{{'Рассчитать стоимость онлайн'|_}} </a>
+    <div class="schedule">
+      <div class="schedule__item">
+        <div class="schedule__inside-block"><i class="icon-check"> </i>
+          {% component 'contenteditor' fixture="p" file="hero/status/day.htm" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" class=""  %}
+        </div>
+        <div class="schedule__date">
+          {% component 'contenteditor' fixture="div" file="hero/status/date.htm" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" class="schedule__date"  %}
+        </div>
+      </div>
+      <div class="schedule__item">
+        <div class="schedule__location">
+          <i class="icon-marker"></i>
+          {% component 'contenteditor' fixture="p" file="hero/status/location.htm" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" class=""  %}
+        </div>
+      </div>
+      <div class="schedule__item schedule__item--next">
+        <div class="schedule__inside-block"><i class="icon-calendar"> </i>
+          <p>{{'СЛЕДУЮЩАЯ ПОСЫЛКА'|_}}</p>
+        </div>
+        <div class="schedule__date">
+          {{ "sunday"|date('d.m.Y') }}
+        </div>
+      </div>
+      <div class="schedule__item schedule__item--collection">
+        <div class="schedule__inside-block"><i class="icon-product"> </i>
+          <p>{{'СБОР ПОСЫЛОК'|_}}</p>
+        </div>
+        <p class="schedule__date">
+          ДО 
+          {{ "wednesday"|date('d.m.Y') }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+<div class="advantages">
+  <div class="container">
+    <div class="advantages__wrap">
+      <div class="advantages__item advantages__item--desc">
+        <h3 class="advantages__subtitle">{{'Почему доверяют нашей компании?'|_}}</h3>
+        <h2 class="advantages__title">Silk Road Shipping</h2>
+        {% component 'contenteditor' fixture="p" class="advantages__desc" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="advantages/desc.htm" %}
+      </div>
+
+      {% set records = advantages.records %}
+      {% set displayColumn = advantages.displayColumn %}
+      {% set noRecordsMessage = advantages.noRecordsMessage %}
+      {% set detailsPage = advantages.detailsPage %}
+      {% set detailsKeyColumn = advantages.detailsKeyColumn %}
+      {% set detailsUrlParameter = advantages.detailsUrlParameter %}
+
+
+      {% for record in records %}
+
+      <div class="advantages__item">
+        <div class="advantages__icon"><img
+            src="{{record.advantage_img.path | resize(40, false, { mode: 'crop', quality: '80', extension: 'webp' })}}"
+            alt=""></div>
+        <h2 class="advantages__title">{{record.title}}</h2>
+        <p class="advantages__desc">{{record.desc}}</p>
+      </div>
+
+      {% else %}
+      <li class="no-data">{{ noRecordsMessage }}</li>
+      {% endfor %}
+
+
+
+      <div class="advantages__item advantages__item--calc">
+        <div class="advantages__icon"><i class="icon-calculator"></i></div>
+        <h2 class="advantages__title">{{'Рассчитайте стоимость перевозки прямо сейчас!'|_}}</h2><a
+          class="btn btn--sm order-js" href="#calculator">{{'Рассчитать стоимость'|_}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% partial 'site/calc' %}
+<div class="services">
+  <div class="container">
+    <h3 class="subtitle">{{'Услуги'|_}}</h3>
+    <h2 class="title">{{'Международная доставка посылок'|_}}</h2>
+    <p class="description">{{'Быстрая и надежная доставка ваших посылок и документов.'|_}}</p>
+    <div class="services__wrap">
+
+      {% set records = services.records %}
+      {% set displayColumn = services.displayColumn %}
+      {% set noRecordsMessage = services.noRecordsMessage %}
+      {% set detailsPage = services.detailsPage %}
+      {% set detailsKeyColumn = services.detailsKeyColumn %}
+      {% set detailsUrlParameter = services.detailsUrlParameter %}
+
+
+      {% for record in records %}
+
+      <div class="services__item">
+        <a class="services__item-img"
+          href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}"
+          style="background-image:
+          url('{{record.service_img.path | resize(350, false, { mode: 'crop', quality: '80', extension: 'webp' })}}');">
+        </a>
+        <div class="services__item-desc">
+          <a class="services__title"
+            href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">{{record.title}}</a>
+          <p class="p16">{{record.desc}}</p>
+        </div>
+      </div>
+      {% else %}
+      <li class="no-data">{{ noRecordsMessage }}</li>
+      {% endfor %}
+
+
+
+    </div>
+  </div>
+</div>
+<div class="about">
+  <div class="container">
+    <div class="about__wrap">
+      <div class="about__col">
+        {% component 'contenteditor' file="about/about-img.htm" fixture="" tools="image,remove" class="about-img" %}
+      </div>
+      <div class="about__col">
+        <h3 class="subtitle">{{'Коротко о нас'|_}}</h3>
+        <h2 class="title">Silk Road Shipping</h2>
+        <div class="description">
+          {% component 'contenteditor' fixture="p" class="" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="about/about-short.htm" %}
+        </div><a class="more" href="#">{{'Подробнее'|_}} <i class="icon-arrow"></i></a>
+      </div>
+    </div>
+  </div>
+  {% partial 'site/about' %}
+  <div class="container">
+    <div class="about__wrap about__wrap--reverse">
+      <div class="about__col">
+        <div class="about__img about__img--info">
+          <img src="{{'assets/img/advantages.webp' | theme}}" alt="">
+          <div class="about__img-inside-info">
+            <h3 class="subtitle subtitle--about">{{'шоппинг'|_}}</h3>
+            <h2 class="title title--about">{{'Заказывайте товар с нами'|_}}</h2>
+            <div class="description">
+              <p> <i class="icon-shopping"> </i>{{'Шоппинг в интернет магазинах США'|_}}</p>
+              <p>{{'Заказывайте быструю <br> доставку с любых интернет <br> магазинов США'|_}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about__col">
+        <h3 class="subtitle">{{'Преимущество'|_}}</h3>
+        <h2 class="title">{{'Почему клиенты выбирают нас'|_}}</h2>
+        <div class="description">
+          {% component 'contenteditor' fixture="p" class="" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="advantages/desc2.htm" %}
+        </div>
+      </div>
+    </div>
+    <!-- <div class="about__advantages">
+      <div class="about__advantages-item">
+        <div class="about__advantages-wrap">
+          <div class="advantages-top"> <i class="icon-boing"></i>Авиаперевозки
+          </div>
+          <div class="advantages-bottom">
+            <p>Максимально быстро и надежно</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+<div class="etaps" id="etaps">
+  <div class="container">
+    <h3 class="subtitle">{{'ЭТАПЫ ЗАКАЗА'|_}}</h3>
+    <h2 class="title">{{'Как это работает'|_}}</h2>
+    <div class="etaps__wrap">
+      <div class="etaps__item p14">
+        {% component 'contenteditor' fixture="div" class="etaps__advantages-wrap" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="steps/step1.htm" %}
+      </div>
+      <div class="etaps__item p14">
+        <div class="etaps__advantages-wrap">
+          {% component 'contenteditor' fixture="div" class="etaps__advantages-wrap" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="steps/step2.htm" %}
+        </div>
+      </div>
+      <div class="etaps__item p14">
+        {% component 'contenteditor' fixture="div" class="etaps__advantages-wrap" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="steps/step3.htm" %}
+      </div>
+      <div class="etaps__item p14">
+        {% component 'contenteditor' fixture="div" class="etaps__advantages-wrap" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="steps/step4.htm" %}
+      </div>
+    </div>
+    <div class="etaps__animation">
+      <div class="etaps-plane"><img src="{{'assets/icons/steps-plane.svg'| theme}}" alt="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.21 89.6" style="display: none;">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: #fcb408;
+              }
+
+              .cls-2 {
+                fill: #f4f6fd;
+              }
+            </style>
+          </defs>
+          <g id="Слой_2" data-name="Слой 2">
+            <g id="Слой_1-2" data-name="Слой 1">
+              <path class="cls-1"
+                d="M76.1,39.6a38,38,0,0,0-11.5-1.8H59.8L55,28.5a3.81,3.81,0,0,0-.3-7.6H51l-.8-1.5a4.21,4.21,0,0,0,2-1,4.2,4.2,0,0,0,1.2-2.6A3.71,3.71,0,0,0,49.7,12l-3.3-.1L40.7.9a1.45,1.45,0,0,0-1-.7L35.3,0a1.22,1.22,0,0,0-1.2,1.4L39,38.2c-10.2.4-20.2,1-27.4,1.4L8,30.9a1.23,1.23,0,0,0-1.1-.7l-5.1-.1A1.16,1.16,0,0,0,.6,31.3L0,56.9a1.16,1.16,0,0,0,1.2,1.2l5.1.1a1.23,1.23,0,0,0,1.1-.7l4-8.6c7.1.8,17.1,1.8,27.3,2.6l-.7,4-1,5.6-4.8,27a1.21,1.21,0,0,0,1.2,1.4l4.3.1a1.38,1.38,0,0,0,1.1-.6L45,78.2l3.3.1a3.75,3.75,0,0,0,2.8-6.4,4.53,4.53,0,0,0-1.9-1.1l.8-1.5,3.6.1a3.71,3.71,0,0,0,3.8-3.7,3.87,3.87,0,0,0-3.2-3.8l5.2-9.1c1.7.1,3.3.1,4.8.1a39.88,39.88,0,0,0,11.6-1.3c5.2-1.5,6.4-4.1,6.4-6C82.3,44,81.2,41.4,76.1,39.6ZM54.6,23.4a1.35,1.35,0,0,1,1.3,1.4,1.29,1.29,0,0,1-1.4,1.3h-.8l-1.4-2.8Zm-5-9.1a1.34,1.34,0,0,1,1.3,1.4A1.29,1.29,0,0,1,49.5,17H49l-1.4-2.8ZM36.7,2.4h2.2L57,37.8c-4.9,0-10.3.2-15.6.3ZM2.9,32.5l3.1.1,3,7.2c-2.8.2-5,.3-6.3.4ZM5.6,55.8l-3.1-.1L2.6,48c1.3.2,3.5.4,6.3.7ZM49.7,74.7A1.29,1.29,0,0,1,48.3,76h-2l1.5-2.7h.5A1.37,1.37,0,0,1,49.7,74.7ZM55,65.8a1.34,1.34,0,0,1-1.4,1.3H51.3l1.5-2.7h.8A1.43,1.43,0,0,1,55,65.8ZM37.1,87.3l-2.2-.1,4.6-26,1-5.8.7-3.7c5.3.4,10.7.8,15.6,1Zm38-37.8a38.6,38.6,0,0,1-10.9,1.2c-20.7-.5-55-4.3-61.6-5.1l.1-2.9c6.6-.5,41.1-2.8,61.7-2.4a40.39,40.39,0,0,1,10.8,1.6c2.1.7,4.6,2,4.5,3.9C79.8,47.8,77.3,48.9,75.1,49.5Z">
+              </path>
+              <path class="cls-2" d="M51,15.7A1.29,1.29,0,0,1,49.6,17h-.5l-1.4-2.8h2A1.51,1.51,0,0,1,51,15.7Z">
+              </path>
+              <path class="cls-2" d="M55.9,24.8a1.29,1.29,0,0,1-1.4,1.3h-.8l-1.4-2.8h2.3A1.51,1.51,0,0,1,55.9,24.8Z">
+              </path>
+              <path class="cls-2" d="M49.7,74.7A1.29,1.29,0,0,1,48.3,76h-2l1.5-2.7h.5A1.37,1.37,0,0,1,49.7,74.7Z">
+              </path>
+              <path class="cls-2" d="M55,65.8a1.34,1.34,0,0,1-1.4,1.3H51.3l1.5-2.7h.8A1.43,1.43,0,0,1,55,65.8Z">
+              </path>
+              <path class="cls-2" d="M56.7,52.8,37.1,87.3l-2.2-.1,4.6-26,1-5.8.7-3.7C46.5,52.2,51.8,52.6,56.7,52.8Z">
+              </path>
+              <path class="cls-2" d="M8.9,48.7,5.6,55.8l-3.1-.1L2.6,48C3.9,48.2,6.1,48.4,8.9,48.7Z">
+              </path>
+              <path class="cls-2" d="M9.1,39.8c-2.8.2-5,.3-6.3.4L3,32.5l3.1.1Z"></path>
+              <path class="cls-2" d="M57,37.8c-4.9,0-10.3.2-15.6.3L36.7,2.4h2.2Z"></path>
+              <path class="cls-2"
+                d="M79.8,45.8c-.1,1.9-2.6,3.1-4.7,3.7a38.6,38.6,0,0,1-10.9,1.2c-20.7-.5-55-4.3-61.6-5.1l.1-2.9c6.6-.5,41.1-2.8,61.7-2.4a40.39,40.39,0,0,1,10.8,1.6C77.4,42.6,79.9,43.9,79.8,45.8Z">
+              </path>
+              <path class="cls-1 smoke5"
+                d="M27.6,87l-14.5-.3a1.2,1.2,0,0,0-1.2,1.1,1.18,1.18,0,0,0,1.2,1.3l14.5.3a1.16,1.16,0,0,0,1.2-1.2A1.29,1.29,0,0,0,27.6,87Z">
+              </path>
+              <path class="cls-1 smoke6"
+                d="M27.8,79.8l-9.1-.2a1.2,1.2,0,0,0-1.2,1.1A1.18,1.18,0,0,0,18.7,82l9.1.2a1.2,1.2,0,0,0,0-2.4Z">
+              </path>
+              <path class="cls-1 smoke4"
+                d="M29.8,72.6l-6.4-.1a1.2,1.2,0,0,0-1.2,1.1,1.18,1.18,0,0,0,1.2,1.3l6.4.1A1.16,1.16,0,0,0,31,73.8,1.22,1.22,0,0,0,29.8,72.6Z">
+              </path>
+              <path class="cls-1 smoke2"
+                d="M14.5,2.5,29,2.8a1.16,1.16,0,0,0,1.2-1.2A1.16,1.16,0,0,0,29,.4L14.6.1a1.16,1.16,0,0,0-1.2,1.2A1.13,1.13,0,0,0,14.5,2.5Z">
+              </path>
+              <path class="cls-1 smoke3"
+                d="M30.1,8.9a1.16,1.16,0,0,0-1.2-1.2l-9.1-.2a1.2,1.2,0,0,0-1.2,1.1,1.18,1.18,0,0,0,1.2,1.3l9.1.2A1.29,1.29,0,0,0,30.1,8.9Z">
+              </path>
+              <path class="cls-1 smoke1"
+                d="M23,16a1.16,1.16,0,0,0,1.2,1.2l6.4.1a1.2,1.2,0,0,0,0-2.4l-6.4-.1A1.22,1.22,0,0,0,23,16Z">
+              </path>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="etaps__animation-wrap">
+        <div class="etaps__animation-step">
+          <div class="etaps__dash"><i> </i><i> </i><i> </i><i> </i><i> </i><i> </i><i> </i></div>
+          <div class="point"></div>
+        </div>
+        <div class="etaps__animation-step">
+          <div class="etaps__dash"><i> </i><i> </i><i> </i><i> </i><i> </i><i> </i><i> </i></div>
+          <div class="point"></div>
+        </div>
+        <div class="etaps__animation-step">
+          <div class="etaps__dash"><i> </i><i> </i><i> </i><i> </i><i> </i><i> </i><i> </i></div>
+          <div class="point"></div>
+        </div>
+        <div class="etaps__animation-step">
+          <div class="etaps__dash"><i> </i><i> </i><i> </i><i> </i><i> </i><i> </i><i> </i></div>
+          <div class="point point--fade-out"></div><a class="btn btn--sm try order-js" href="#calculator"><i
+              class="icon-check"></i>ПОПРОБОВАТЬ </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="add-info add-info--with-arrow" style="background-image: url({{'assets/img/add-info.webp'| theme}})">
+  <div class="container">
+    <div class="add-info__wrap">
+      <div class="add-info__col">
+        <h3 class="subtitle subtitle--light">Silk Road shipping</h3>
+        <h2 class="title title--light">{{'Если в вашем регионе нет представителя'|_}}</h2>
+        <div class="description description--light">
+          {% component 'contenteditor' fixture="p" class="" tools="bold,italic,align-left,align-center,align-right,undo,redo,line-break" file="illinois/desc.htm" %}
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 183.05 69.85">
+          <defs>
+            <style>
+              .add-info.cls-3,
+              .add-info.cls-4 {
+                fill: none;
+                stroke: #0dd78f;
+                stroke-width: 2px;
+              }
+
+              .add-info.cls-4 {
+                stroke-dasharray: 48 8;
+              }
+            </style>
+          </defs>
+          <g id="Слой_2" data-name="Слой 2">
+            <g id="Слой_1-2" data-name="Слой 1">
+              <path class="cls-3 draw-arrow tail" d="M177,69.46l4.67-11L170.1,54.35"></path>
+              <path class="cls-4 draw-arrow" d="M.08,38.13C41.73,34.73,39.8-.29,79.79,1s60.47,75.15,101.08,58.28">
+              </path>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="add-info__col">
+        <div class="add-info__address">
+          <p>Contact Name: Ваше Имя и Фамилия (латиницей) </p>
+          <p>Address Line 1: 1304 Derby Lane</p>
+          <p>City: Mundelein</p>
+          <p>State: IL (Illinois)</p>
+          <p>ZIP-code: 60060</p>
+          <p>Phone: (847) 271 - 1988</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="reviews">
+  <div class="container">
+    <div class="reviews__wrap">
+      <div class="reviews__col">
+        <h3 class="subtitle">{{'Отзывы'|_}}</h3>
+        <h2 class="title">{{'Отзывы клиентов'|_}}</h2>
+        <div class="description">
+          <p>{{'В данном разделе собраны реальные отзывы от клиентов и партнеров <br> компании Silk Road
+            Shipping.'|_}}
+          </p>
+        </div>
+      </div>
+      <div class="reviews__col">
+        <p>{{'Вы так же можете'|_}}
+          {% if user %}
+          <a href="#" class="review-btn">{{'оставить свой отзыв'|_}} </a>
+          {% else %}
+          <a href="#" class="review-registration-btn">{{'оставить свой отзыв'|_}} </a>
+          {% endif %}
+
+        </p>
+      </div>
+    </div>
+    <div class="reviews__slider">
+      <div class="swiper-container reviews-js">
+
+        <div class="swiper-wrapper">
+
+
+
+          {% set records = reviews.records %}
+          {% set displayColumn = reviews.displayColumn %}
+          {% set noRecordsMessage = reviews.noRecordsMessage %}
+          {% set detailsPage = reviews.detailsPage %}
+          {% set detailsKeyColumn = reviews.detailsKeyColumn %}
+          {% set detailsUrlParameter = reviews.detailsUrlParameter %}
+
+          {% for record in records %}
+          {% if record.pub == false %}
+
+          {% else %}
+          <div class="swiper-slide">
+            <div class="reviews__top">
+              <div class="reviews__user">
+                <div class="reviews__icon"><i class="icon-profile"></i></div>
+                <div class="reviews__name"><span>{{record.name}} {{record.surname}}</span></div>
+              </div>
+              <div class="reviews__info">
+                <div class="reviews__date">{{record.created_at |date("d.m.Y")}}</div>
+              </div>
+            </div>
+            <div class="reviews__text">
+              <p>{{record.message}}</p>
+            </div>
+          </div>
+          {% endif %}
+
+          {% endfor %}
+
+        </div>
+        <div class="swiper-pagination"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if user %}
+<div id="reviewForm" class="popup review-success">
+  <div class="popup__window">
+    <svg xmlns="http://www.w3.org/2000/svg" width="142" height="142" viewBox="0 0 142 142" fill="none">
+      <path
+        d="M71 112C93.6437 112 112 93.6437 112 71C112 48.3563 93.6437 30 71 30C48.3563 30 30 48.3563 30 71C30 93.6437 48.3563 112 71 112Z"
+        fill="#0DC332" />
+      <path
+        d="M133.5 71C133.5 105.518 105.518 133.5 71 133.5C36.4822 133.5 8.5 105.518 8.5 71C8.5 36.4822 36.4822 8.5 71 8.5C105.518 8.5 133.5 36.4822 133.5 71Z"
+        stroke="#D1D1D1" />
+      <path d="M92 56L66.1538 85L50 72.1111" stroke="white" stroke-width="6" stroke-miterlimit="10"
+        stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <h2>{{'Спасибо'|_}}!</h2>
+    <p>{{'Ваш отзыв отправлен'|_}}!</p>
+  </div>
+</div>
+
+<div class="popup review-popup">
+  <div class="popup__window">
+    <svg class="close" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x">
+      <path fill="currentColor"
+        d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
+        class=""></path>
+    </svg>
+    {% component 'review' %}
+  </div>
+</div>
+{% else %}
+
+<div class="popup review-registration">
+  <div class="popup__window">
+    <svg class="close" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x">
+      <path fill="currentColor"
+        d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
+        class=""></path>
+    </svg>
+    <p>{{'Чтобы оставить отзыв, Вам необходимо зарегистрироваться или быть авторизованным'|_}}!</p>
+    <a href="{{'registration'|page}}" class="btn">{{'Зарегистрироваться'|_}}</a>
+  </div>
+</div>
+
+{% endif %}

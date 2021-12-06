@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table silkroad_onlinestore_'
+    - builder_table_create_silkroad_onlinestore_.php
+1.0.3:
+    - 'Updated table silkroad_onlinestore_'
+    - builder_table_update_silkroad_onlinestore_.php
+1.0.4:
+    - 'Updated table silkroad_onlinestore_'
+    - builder_table_update_silkroad_onlinestore__2.php
+1.0.5:
+    - 'Updated table silkroad_onlinestore_'
+    - builder_table_update_silkroad_onlinestore__3.php

@@ -1,0 +1,18 @@
+fields:
+    advantage_img:
+        label: 'Advantage img / Изображение преимущества'
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: full
+        type: fileupload
+    title:
+        label: 'Title / Заголовок'
+        span: auto
+        type: text
+    desc:
+        label: 'Description / Описание'
+        span: auto
+        type: text

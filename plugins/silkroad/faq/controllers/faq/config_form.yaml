@@ -1,0 +1,10 @@
+name: Faq
+form: $/silkroad/faq/models/faq/fields.yaml
+modelClass: silkRoad\Faq\Models\Faq
+defaultRedirect: silkroad/faq/faq
+create:
+    redirect: 'silkroad/faq/faq/update/:id'
+    redirectClose: silkroad/faq/faq
+update:
+    redirect: silkroad/faq/faq
+    redirectClose: silkroad/faq/faq

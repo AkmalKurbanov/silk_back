@@ -1,0 +1,13 @@
+columns:
+    city:
+        label: 'City / Город'
+        type: text
+    city_price:
+        label: 'Cost of delivery / Стоимость доставки '
+        type: text
+    created_at:
+        label: 'Created_at / Создано'
+        type: datetime
+    updated_at:
+        label: 'Updated_at / Обновлено'
+        type: datetime

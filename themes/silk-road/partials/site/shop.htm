@@ -1,0 +1,40 @@
+[builderList store]
+modelClass = "silkroad\OnlineStore\Models\Store"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[viewBag]
+==
+<div class="online-store">
+  <div class="container">
+    <h2 class="title">{{'Популярные Интернет Магазины США'|_}}</h2>
+    <div class="description">
+      <p>{{'Заказы у ваших дверей в кратчайший срок'|_}}</p>
+    </div>
+    <div class="online-store__wrap">
+
+      {% set records = store.records %}
+      {% set displayColumn = store.displayColumn %}
+      {% set noRecordsMessage = store.noRecordsMessage %}
+      {% set detailsPage = store.detailsPage %}
+      {% set detailsKeyColumn = store.detailsKeyColumn %}
+      {% set detailsUrlParameter = store.detailsUrlParameter %}
+
+      {% for record in records %}
+      <div class="online-store__item">
+        <p><a href="{{record.name}}">{{record.name}}</a> - {{record.desc}}</p>
+      </div>
+      {% else %}
+      <li class="no-data">{{ noRecordsMessage }}</li>
+      {% endfor %}
+
+
+
+    </div>
+  </div>
+</div>

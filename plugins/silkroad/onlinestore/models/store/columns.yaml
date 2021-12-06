@@ -1,0 +1,16 @@
+columns:
+    name:
+        label: 'Name-domain / Имя-домен'
+        type: text
+    desc:
+        label: 'Description / Краткое описание'
+        type: text
+    pub:
+        label: 'Publish / Опубликовать'
+        type: text
+    created_at:
+        label: 'Сreated at / Создан'
+        type: datetime
+    updated_at:
+        label: 'Updated at / Обновлен'
+        type: datetime

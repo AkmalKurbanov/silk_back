@@ -1,0 +1,59 @@
+fields:
+    service_img:
+        label: 'Service img / Изображение услуги'
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: full
+        type: fileupload
+    title:
+        label: 'Title / Заголовок'
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: title
+            type: slug
+        type: text
+    desc:
+        label: 'Thumbnail sketch / Краткое описание'
+        size: ''
+        span: full
+        type: textarea
+    pub_shops:
+        label: 'Shop list / Список магазинов'
+        span: auto
+        type: switch
+tabs:
+    fields:
+        content:
+            label: 'Content/ Контент'
+            prompt: 'Add new item / Добавить'
+            style: default
+            span: full
+            type: repeater
+            tab: 'Content/ Контент'
+            form:
+                fields:
+                    img:
+                        label: 'Image / Изображение'
+                        mode: image
+                        span: auto
+                        type: mediafinder
+                    title:
+                        label: 'Title / Заголовок'
+                        span: right
+                        type: text
+                    subtitle:
+                        label: 'Subtitle / Подзаголовок'
+                        span: right
+                        type: text
+                    desc:
+                        label: 'Description / Описание'
+                        size: ''
+                        span: full
+                        type: richeditor

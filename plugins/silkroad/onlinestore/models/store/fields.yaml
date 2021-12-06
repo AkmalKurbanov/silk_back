@@ -1,0 +1,14 @@
+fields:    
+    name:
+        label: 'Name-domain / Имя-домен'
+        span: left
+        type: text
+    desc:
+        label: 'Description / Краткое описание'
+        size: ''
+        span: right
+        type: textarea
+    pub:
+        label: 'Publish / Опубликовать'
+        span: left
+        type: switch

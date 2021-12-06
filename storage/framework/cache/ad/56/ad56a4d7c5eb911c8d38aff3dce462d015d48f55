@@ -1,0 +1,67 @@
+1637169372a:1:{s:13:"site/shop.htm";a:7:{s:8:"fileName";s:13:"site/shop.htm";s:7:"content";s:1223:"[builderList store]
+modelClass = "silkroad\OnlineStore\Models\Store"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[viewBag]
+==
+<div class="online-store">
+  <div class="container">
+    <h2 class="title">{{'Популярные Интернет Магазины США'|_}}</h2>
+    <div class="description">
+      <p>{{'Заказы у ваших дверей в кратчайший срок'|_}}</p>
+    </div>
+    <div class="online-store__wrap">
+
+      {% set records = store.records %}
+      {% set displayColumn = store.displayColumn %}
+      {% set noRecordsMessage = store.noRecordsMessage %}
+      {% set detailsPage = store.detailsPage %}
+      {% set detailsKeyColumn = store.detailsKeyColumn %}
+      {% set detailsUrlParameter = store.detailsUrlParameter %}
+
+      {% for record in records %}
+      <div class="online-store__item">
+        <p><a href="{{record.name}}">{{record.name}}</a> - {{record.desc}}</p>
+      </div>
+      {% else %}
+      <li class="no-data">{{ noRecordsMessage }}</li>
+      {% endfor %}
+
+
+
+    </div>
+  </div>
+</div>";s:5:"mtime";i:1635495740;s:6:"markup";s:955:"<div class="online-store">
+  <div class="container">
+    <h2 class="title">{{'Популярные Интернет Магазины США'|_}}</h2>
+    <div class="description">
+      <p>{{'Заказы у ваших дверей в кратчайший срок'|_}}</p>
+    </div>
+    <div class="online-store__wrap">
+
+      {% set records = store.records %}
+      {% set displayColumn = store.displayColumn %}
+      {% set noRecordsMessage = store.noRecordsMessage %}
+      {% set detailsPage = store.detailsPage %}
+      {% set detailsKeyColumn = store.detailsKeyColumn %}
+      {% set detailsUrlParameter = store.detailsUrlParameter %}
+
+      {% for record in records %}
+      <div class="online-store__item">
+        <p><a href="{{record.name}}">{{record.name}}</a> - {{record.desc}}</p>
+      </div>
+      {% else %}
+      <li class="no-data">{{ noRecordsMessage }}</li>
+      {% endfor %}
+
+
+
+    </div>
+  </div>
+</div>";s:4:"code";N;s:17:"builderList store";a:8:{s:10:"modelClass";s:33:"silkroad\OnlineStore\Models\Store";s:5:"scope";s:1:"-";s:10:"scopeValue";s:12:"{{ :scope }}";s:13:"displayColumn";s:4:"name";s:16:"noRecordsMessage";s:16:"No records found";s:11:"detailsPage";s:1:"-";s:19:"detailsUrlParameter";s:2:"id";s:10:"pageNumber";s:11:"{{ :page }}";}s:7:"viewBag";a:0:{}}}

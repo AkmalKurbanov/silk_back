@@ -1,0 +1,10 @@
+name: Store
+form: $/silkroad/onlinestore/models/store/fields.yaml
+modelClass: silkroad\OnlineStore\Models\Store
+defaultRedirect: silkroad/onlinestore/store
+create:
+    redirect: 'silkroad/onlinestore/store/update/:id'
+    redirectClose: silkroad/onlinestore/store
+update:
+    redirect: silkroad/onlinestore/store
+    redirectClose: silkroad/onlinestore/store

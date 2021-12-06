@@ -1,0 +1,12 @@
+1.0.1:
+    - 'Initialize plugin.'
+    - add_new_fields.php
+1.0.2:
+    - 'Created table silkroad_profile_'
+    - builder_table_create_silkroad_profile_.php
+1.0.3:
+    - 'Updated table silkroad_profile_'
+    - builder_table_update_silkroad_profile_.php
+1.0.4:
+    - 'Drop table silkroad_profile_'
+    - builder_table_delete_silkroad_profile_.php

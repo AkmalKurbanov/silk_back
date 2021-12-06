@@ -1,0 +1,74 @@
+1638808048a:1:{s:12:"services.htm";a:11:{s:8:"fileName";s:12:"services.htm";s:7:"content";s:1460:"title = "Услуги"
+url = "/services"
+layout = "default"
+is_hidden = 0
+
+[builderList services]
+modelClass = "silkRoad\Services\Models\Service"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "service"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+pageNumber = "{{ :page }}"
+
+[viewBag]
+localeTitle[en] = "Services"
+==
+{% partial 'site/breadcrumbs' %}
+<div class="services services--inside">
+  <div class="container">
+    <h6>НАШи услуги</h6>
+    <div class="services__wrap-item">
+      {% set records = services.records %}
+      {% set displayColumn = services.displayColumn %}
+      {% set noRecordsMessage = services.noRecordsMessage %}
+      {% set detailsPage = services.detailsPage %}
+      {% set detailsKeyColumn = services.detailsKeyColumn %}
+      {% set detailsUrlParameter = services.detailsUrlParameter %}
+
+      {% for record in records %}
+
+      <div class="services__service"
+        style="background-image: url('{{record.service_img.path | resize(1140, false, { mode: 'crop', quality: '80', extension: 'webp' })}}')">
+        <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+          <span>{{record.title}}</span>
+        </a>
+      </div>
+
+      {% else %}
+      <li class="no-data">{{ noRecordsMessage }}</li>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>";s:5:"mtime";i:1634756509;s:6:"markup";s:1044:"{% partial 'site/breadcrumbs' %}
+<div class="services services--inside">
+  <div class="container">
+    <h6>НАШи услуги</h6>
+    <div class="services__wrap-item">
+      {% set records = services.records %}
+      {% set displayColumn = services.displayColumn %}
+      {% set noRecordsMessage = services.noRecordsMessage %}
+      {% set detailsPage = services.detailsPage %}
+      {% set detailsKeyColumn = services.detailsKeyColumn %}
+      {% set detailsUrlParameter = services.detailsUrlParameter %}
+
+      {% for record in records %}
+
+      <div class="services__service"
+        style="background-image: url('{{record.service_img.path | resize(1140, false, { mode: 'crop', quality: '80', extension: 'webp' })}}')">
+        <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+          <span>{{record.title}}</span>
+        </a>
+      </div>
+
+      {% else %}
+      <li class="no-data">{{ noRecordsMessage }}</li>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>";s:4:"code";N;s:5:"title";s:12:"Услуги";s:3:"url";s:9:"/services";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:20:"builderList services";a:9:{s:10:"modelClass";s:32:"silkRoad\Services\Models\Service";s:5:"scope";s:1:"-";s:10:"scopeValue";s:12:"{{ :scope }}";s:13:"displayColumn";s:5:"title";s:16:"noRecordsMessage";s:16:"No records found";s:11:"detailsPage";s:7:"service";s:16:"detailsKeyColumn";s:4:"slug";s:19:"detailsUrlParameter";s:4:"slug";s:10:"pageNumber";s:11:"{{ :page }}";}s:7:"viewBag";a:1:{s:11:"localeTitle";a:1:{s:2:"en";s:8:"Services";}}}}

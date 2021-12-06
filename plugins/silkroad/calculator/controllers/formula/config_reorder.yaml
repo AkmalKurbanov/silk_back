@@ -1,0 +1,4 @@
+title: Formula
+modelClass: silkroad\Calculator\Models\Formula
+toolbar:
+    buttons: reorder_toolbar

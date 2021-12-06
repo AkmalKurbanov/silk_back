@@ -1,0 +1,110 @@
+name: Silk road
+description: 'Доставка товара из США'
+code: ''
+
+form:
+    tabs:
+        fields:
+            social:
+              type: repeater
+              label: Social network / Cоциальные сети
+              titleFrom: name  
+              tab: 'Social networks / Cоциальные сети'
+              form:
+                fields:
+                  awesome_icon:
+                    label: Social network (Icon) / Социальная сеть ( Иконка )
+                    span: left
+                    type: awesomeiconslist
+                    unicodeValue: false
+                    emptyOption: false
+                    iconTypes: brands
+                    placeholder: Select an icon / Выбрать иконку
+                    span: left 
+                  url:
+                    label: Social network link / Ссылка социальной сети
+                    span: right
+                    type: text
+                    placeholder: https://www.instagram.com/
+
+            email:
+              type: text
+              label: Email / Электронная почта
+              placeholder: info@silkroadshipping.biz
+              span: left
+              tab: 'Contacts / Контакты'          
+            phone:
+              type: text
+              label: Phone number / Номер телефона 
+              placeholder: +1 (847) 271 1988
+              span: right
+              tab: 'Contacts / Контакты'
+            address:
+              type: text
+              label: Address / Адрес
+              placeholder: 1304 Derby Lane
+              tab: 'Contacts / Контакты'
+              span: left
+            city:
+              type: text
+              label: City / Город
+              placeholder: Mundelein
+              tab: 'Contacts / Контакты'
+              span: right 
+            state:
+              type: text
+              label: State / Штат
+              placeholder: IL
+              tab: 'Contacts / Контакты'
+              span: left 
+            zip_code:
+              type: text
+              label: Zip Code / Почтовый Индекс
+              placeholder: 60060 USA
+              tab: 'Contacts / Контакты'
+              span: right 
+            collection_points:
+              label: Сollection points / Пункты сбора
+              type: repeater
+              tab: 'Сollection points / Пункты сбора'
+              form:
+                  fields:
+                      collection_point_map:
+                          label: Сollection point ( map ) / Пункт сбора ( карта )
+                          type: textarea
+                          placeholder:   
+                      collection_point_office:
+                          label: Сollection point ( office ) / Пункт сбора ( офис )
+                          type: text
+                          placeholder: №1 Office in Lincolnwood, IL
+                          span: left
+                          
+                      collection_point_address:
+                          label: Сollection point ( address ) / Пункт сбора ( адрес )
+                          type: text
+                          placeholder: 7080 McCormick Blvd, Lincolnwood, IL 60712
+                          span: right
+                      collection_point_working_days1:
+                          label: Working days 1 / Рабочие дни 1
+                          type: text
+                          placeholder: Monday - Friday
+                          span: left
+                      collection_point_work_time1:
+                          label: Work time 1 / Рабочее время 1
+                          type: text
+                          placeholder: 9AM - 5PM
+                          span: right
+                      collection_point_working_days2:
+                          label: Working days 2 / Рабочие дни 2
+                          type: text
+                          placeholder: Saturday
+                          span: left
+                      collection_point_work_time2:
+                          label: Work time 2 / Рабочее время 2
+                          type: text
+                          placeholder: 10AM - 1PM
+                          span: right
+                      collection_point_add_info:
+                          label: Additional information / Дополнительная информация
+                          type: textarea 
+                            

@@ -1,0 +1,16 @@
+plugin:
+    name: 'silkroad.calculator::lang.plugin.name'
+    description: 'silkroad.calculator::lang.plugin.description'
+    author: silkroad
+    icon: oc-icon-calculator
+    homepage: ''
+navigation:
+    Calculator:
+        label: 'Calculator / Калькулятор'
+        url: silkroad/calculator/calculator
+        icon: icon-calculator
+        sideMenu:
+            Formula:
+                label: 'Formula / Формула'
+                url: silkroad/calculator/formula
+                icon: icon-code-fork

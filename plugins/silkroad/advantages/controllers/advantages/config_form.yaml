@@ -1,0 +1,10 @@
+name: Advantages
+form: $/silkroad/advantages/models/advantage/fields.yaml
+modelClass: silkRoad\Advantages\Models\Advantage
+defaultRedirect: silkroad/advantages/advantages
+create:
+    redirect: 'silkroad/advantages/advantages/update/:id'
+    redirectClose: silkroad/advantages/advantages
+update:
+    redirect: silkroad/advantages/advantages
+    redirectClose: silkroad/advantages/advantages

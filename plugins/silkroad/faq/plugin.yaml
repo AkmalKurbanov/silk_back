@@ -1,0 +1,11 @@
+plugin:
+    name: 'silkroad.faq::lang.plugin.name'
+    description: 'silkroad.faq::lang.plugin.description'
+    author: silkRoad
+    icon: oc-icon-question-circle
+    homepage: ''
+navigation:
+    Faq:
+        label: FAQ
+        url: silkroad/faq/faq
+        icon: icon-question-circle

@@ -1,0 +1,7 @@
+columns:
+    question:
+        label: 'Question / Вопрос'
+        type: text
+    answer:
+        label: 'Answer / Ответ'
+        type: text

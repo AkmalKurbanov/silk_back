@@ -1,0 +1,9 @@
+fields:
+    main_price:
+        label: 'Price per kilogram / Цена за килограмм'
+        span: left
+        type: number
+    divider:
+        label: 'Divider from formula / Делитель из формулы'
+        span: right
+        type: number

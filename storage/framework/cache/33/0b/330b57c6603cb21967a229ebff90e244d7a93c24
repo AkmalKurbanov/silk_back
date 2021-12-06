@@ -1,0 +1,62 @@
+1638808048a:1:{s:9:"order.htm";a:7:{s:8:"fileName";s:9:"order.htm";s:7:"content";s:1645:"[viewBag]
+title = "Заказ на склад США"
+url = "/order"
+layout = "Static"
+is_hidden = 0
+navigation_hidden = 0
+banner = "/services2.2.webp"
+banner_title = "Заказ на склад в США"
+banner_subtitle = "Заказывайте быструю доставку с любых интернет магазинов США"
+infoBlock[0][themeImg] = "/amazon.webp"
+infoBlock[0][Title] = "Адрес нашего склада на сайтах магазинов вносится таким образом:"
+infoBlock[0][subTitle] = "Как правильно указать наш адрес на сайте магазина?"
+infoBlock[0][desc] = "<p>Contact Name: Ваше Имя и Фамилия (латиницей)</p>
+
+<p>Address Line 1: 1304 Derby Lane</p>
+
+<p>City:&nbsp;Mundelein</p>
+
+<p>State: IL (Illinois)</p>
+
+<p>ZIP-code: 60060</p>
+
+<p>Phone: (847) 271 - 1988</p>
+
+<p>
+	<br>
+</p>
+
+<p><strong>После того как вы заказали товар, обязательно напишите нам:</strong></p>
+
+<p>
+	<br>
+</p>
+
+<p>Информацию отправителя ( <span style=\"background-color: transparent;\">ФИО, н</span><span style=\"background-color: transparent;\">омер телефона ), и</span><span style=\"background-color: transparent;\">нформацию отправителя (&nbsp;</span><span style=\"background-color: transparent;\">ФИО, н</span><span style=\"background-color: transparent;\">омер телефона )</span></p>
+
+<p>на наш whatsapp <a href=\"https://wa.me/+1 847 2711988\">+1 847 2711988</a>&nbsp;</p>"
+==";s:5:"mtime";i:1635518199;s:6:"markup";s:0:"";s:4:"code";N;s:7:"viewBag";a:9:{s:5:"title";s:33:"Заказ на склад США";s:3:"url";s:6:"/order";s:6:"layout";s:6:"Static";s:9:"is_hidden";s:1:"0";s:17:"navigation_hidden";s:1:"0";s:6:"banner";s:17:"/services2.2.webp";s:12:"banner_title";s:36:"Заказ на склад в США";s:15:"banner_subtitle";s:111:"Заказывайте быструю доставку с любых интернет магазинов США";s:9:"infoBlock";a:1:{i:0;a:4:{s:8:"themeImg";s:12:"/amazon.webp";s:5:"Title";s:117:"Адрес нашего склада на сайтах магазинов вносится таким образом:";s:8:"subTitle";s:92:"Как правильно указать наш адрес на сайте магазина?";s:4:"desc";s:954:"<p>Contact Name: Ваше Имя и Фамилия (латиницей)</p>
+
+<p>Address Line 1: 1304 Derby Lane</p>
+
+<p>City:&nbsp;Mundelein</p>
+
+<p>State: IL (Illinois)</p>
+
+<p>ZIP-code: 60060</p>
+
+<p>Phone: (847) 271 - 1988</p>
+
+<p>
+	<br>
+</p>
+
+<p><strong>После того как вы заказали товар, обязательно напишите нам:</strong></p>
+
+<p>
+	<br>
+</p>
+
+<p>Информацию отправителя ( <span style="background-color: transparent;">ФИО, н</span><span style="background-color: transparent;">омер телефона ), и</span><span style="background-color: transparent;">нформацию отправителя (&nbsp;</span><span style="background-color: transparent;">ФИО, н</span><span style="background-color: transparent;">омер телефона )</span></p>
+
+<p>на наш whatsapp <a href="https://wa.me/+1 847 2711988">+1 847 2711988</a>&nbsp;</p>";}}}s:12:"parsedMarkup";s:0:"";}}

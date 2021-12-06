@@ -1,0 +1,57 @@
+columns:
+    id:
+        label: 'rainlab.user::lang.user.id'
+        type: number
+        invisible: true
+    username:
+        label: Логин
+        type: text
+        searchable: true
+        invisible: true
+    name:
+        label: 'rainlab.user::lang.user.name'
+        type: text
+        searchable: true
+    surname:
+        label: 'rainlab.user::lang.user.surname'
+        type: text
+        searchable: true
+        invisible: true
+    phone:
+        label: Телефон
+        type: text
+        searchable: true
+        invisible: true
+    # history:
+    #     type: text
+    #     label: Номер заказа
+    #     searchable: true
+    address:
+        label: Адрес
+        type: text
+        searchable: true
+        invisible: true
+    email:
+        label: 'rainlab.user::lang.user.email'
+        type: text
+        searchable: true
+    created_at:
+        label: 'rainlab.user::lang.user.created_at'
+        type: timetense
+    last_seen:
+        label: 'rainlab.user::lang.user.last_seen'
+        type: timetense
+    is_guest:
+        label: 'rainlab.user::lang.user.is_guest'
+        type: switch
+        invisible: true
+    created_ip_address:
+        label: 'rainlab.user::lang.user.created_ip_address'
+        type: timetense
+        searchable: true
+        invisible: true
+    last_ip_address:
+        label: 'rainlab.user::lang.user.last_ip_address'
+        type: timetense
+        searchable: true
+        invisible: true

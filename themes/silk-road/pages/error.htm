@@ -1,0 +1,26 @@
+title = "Страница ошибки (500)"
+url = "/error"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeTitle[en] = "Error page (500)"
+==
+<div class="jumbotron" style="padding: 0 20px 20px 0;">
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul>
+                <li> <a href="{{ 'home'|page }}">{{'Главная'|_}} </a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        {% if activeLocale == 'ru' %}
+        <h1>Ошибка</h1>
+        <p>К сожалению, что-то пошло не так, и страница не может быть отображена.</p>
+        {% else %}
+        <h1>Error</h1>
+        <p>We're sorry, but something went wrong and the page cannot be displayed.</p>
+        {% endif %}
+    </div>
+</div>

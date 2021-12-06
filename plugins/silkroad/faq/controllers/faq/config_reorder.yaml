@@ -1,0 +1,4 @@
+title: Faq
+modelClass: silkRoad\Faq\Models\Faq
+toolbar:
+    buttons: reorder_toolbar

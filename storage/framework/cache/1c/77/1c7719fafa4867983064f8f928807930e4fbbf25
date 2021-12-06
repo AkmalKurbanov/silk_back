@@ -1,0 +1,60 @@
+1638808048a:1:{s:7:"faq.htm";a:10:{s:8:"fileName";s:7:"faq.htm";s:7:"content";s:1016:"title = "Faq"
+url = "/faq"
+layout = "default"
+is_hidden = 0
+
+[builderList faq]
+modelClass = "silkRoad\Faq\Models\Faq"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "question"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% partial 'site/breadcrumbs' %}
+<div class="faq">
+  <div class="container">
+    <ul>
+      {% set records = faq.records %}
+      {% set displayColumn = faq.displayColumn %}
+      {% set noRecordsMessage = faq.noRecordsMessage %}
+      {% set detailsPage = faq.detailsPage %}
+      {% set detailsKeyColumn = faq.detailsKeyColumn %}
+      {% set detailsUrlParameter = faq.detailsUrlParameter %}
+
+      {% for record in records %}
+      <li>
+        <div class="faq__title">{{record.question}}</div>
+        <div class="faq__desc">{{record.answer}}</div>
+      </li>
+      {% else %}
+      <li class="no-data">{{ noRecordsMessage }}</li>
+      {% endfor %}
+
+    </ul>
+  </div>
+</div>";s:5:"mtime";i:1633622796;s:6:"markup";s:703:"{% partial 'site/breadcrumbs' %}
+<div class="faq">
+  <div class="container">
+    <ul>
+      {% set records = faq.records %}
+      {% set displayColumn = faq.displayColumn %}
+      {% set noRecordsMessage = faq.noRecordsMessage %}
+      {% set detailsPage = faq.detailsPage %}
+      {% set detailsKeyColumn = faq.detailsKeyColumn %}
+      {% set detailsUrlParameter = faq.detailsUrlParameter %}
+
+      {% for record in records %}
+      <li>
+        <div class="faq__title">{{record.question}}</div>
+        <div class="faq__desc">{{record.answer}}</div>
+      </li>
+      {% else %}
+      <li class="no-data">{{ noRecordsMessage }}</li>
+      {% endfor %}
+
+    </ul>
+  </div>
+</div>";s:4:"code";N;s:5:"title";s:3:"Faq";s:3:"url";s:4:"/faq";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:15:"builderList faq";a:8:{s:10:"modelClass";s:23:"silkRoad\Faq\Models\Faq";s:5:"scope";s:1:"-";s:10:"scopeValue";s:12:"{{ :scope }}";s:13:"displayColumn";s:8:"question";s:16:"noRecordsMessage";s:16:"No records found";s:11:"detailsPage";s:1:"-";s:19:"detailsUrlParameter";s:2:"id";s:10:"pageNumber";s:11:"{{ :page }}";}}}

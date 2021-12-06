@@ -1,0 +1,11 @@
+plugin:
+    name: 'silkroad.reviews::lang.plugin.name'
+    description: 'silkroad.reviews::lang.plugin.description'
+    author: silkroad
+    icon: oc-icon-wechat
+    homepage: ''
+navigation:
+    Reviews:
+        label: 'Reviews / Отзывы'
+        url: silkroad/reviews/reviews
+        icon: icon-wechat
